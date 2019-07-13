@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+</div>
+<html>
+
+<head>
+    <title> JQuery Crash Course </title>
+    <!-- including Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Including CSS from here -->
+    <style>
+        boddy {
+            font-size: 17px;
+            font-family: Arial;
+            background: lightgray;
+            line-height: 1.5em;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px black solid;
+            margin-bottom: 10px;
+
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JQuery Crash Course | Events </h1>
+    </header>
+    <div id="container">
+        <h3> Mouse Events</h3>
+        <button id="btn1" class="btnclass">Button 1</button>
+        <button id="btn2">Button 2</button>
+        <p class="para1">jQuery is a fast, small, and feature-rich JavaScript library.
+            It makes things like HTML document traversal and manipulation, event handling,
+            animation, and Ajax much simpler with an easy-to-use API that works across
+            a multitude of browsers. If you're new to jQuery, we recommend that you
+            check out the document</p>
+            <h1 id="Coords"></h1>
+            <hr>
+            <h3>Form</h3>
+            <form id="my-form">
+                <label>Name</label> <br>
+                <input type="text" id="name" name="name"> <br>
+                <label>Email</label> <br>
+                <input type="email" id="email" name="email"> <br>
+                <label>Gender</label> <br>
+                <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select> 
+                <br>
+                <input type="submit" value="Submit"> 
+            </form>
+    </div>
+    <script>
+                //////      COMMENT OUT ON BY ONE TO START LEARNING AND TESTING OUTPUTS
+        /*
+        //1. Add click event on button 1
+            // use document ready when functions are there, it is good this way.
+                $(document).ready(function() {
+                //     $('#btn1').click(function() {
+                //     alert('Button Clicked');
+        
+                // });
+                $('#btn1').on('click', function(){  //takes 2 paremeters, the event we want and than function.
+                    alert('Button Clicked');
+                });
+                });
+            // it will work the same way, so it's on you that you wanna use .on or not.
+        //2. i want to disappear paragraph when button1 is clicked
+                $(document).ready(function() {
+                    $('#btn1').on('click', function(){
+                        // $('.para1').hide();
+                        $('.para1').toggle(); // if you want to toggle same button back and forth
+                });
+        //3. button 2 for showing..
+                $('#btn2').on('click', function(){
+                    $('.para1').show();
+                });
+                });
+        
+        */
+
+    //          DOUBLE CLICK EVENT
+        // $('#btn1').dblclick(function() {
+        //     $('.para1').toggle();
+        // });
+    // Hover Over Event (it is not actual event, this is shourthand) so if you put it in .on - 
+     //nothing will happen, try it. So, we have to do it this way 
+        // $('#btn2').hover(function() { // see when you hover over button 2, it toggle
+        //     $('.para1').toggle();
+        // });
+     //Mouse move
+        // $('#btn1').mousemove(function() { //when you move mouse it toggle
+        //     $('.para1').toggle();
+        // });
+        // check mousedown and mouseup too..
+
+    //pass parameter
+        // $('#btn1').click(function (e) {
+        //         console.log(e);
+
+        //     });
+            // $('#btn1').click(function (e) {
+            //     alert(e.currentTarget.id);  //gives us button1 id
+            //     alert(e.currentTarget.innerHTML);
+            //     alert(e.currentTarget.outerHTML);
+            //     alert(e.currentTarget.className);
+
+            // });
+    // Mouse move with parameter(can do amazing things)
+        // $('#btn1').mousemove(function (e) { //when you move mouse it toggle
+        //     console.log('Coords: Y: ' +e.clientY+ "X: "+e.clientX); //you can see coordinates on console
+        // });
+    //  can be done to document too
+    // $(document).mousemove(function (e) { //when you move mouse it toggle
+    //         $('#Coords').html('Coords: Y: ' +e.clientY+ "X: "+e.clientX); //you can see coordinates on browser
+            //but for this add <h1 id="Coords"></h1> in html 
+        // });
+
+        //         FOCUS AND BLUR EVENT(When you click into input)
+        $('input').focus(function() {
+            // alert('focus');
+            // $('input#name').css('background', 'pink'); // it will only do once
+            //best is use "this"
+            $(this).css('background', 'pink'); 
+        });
+            //but when we clickout it doesn't change back. so if you want to do it-
+            //use blur event (opposite of focus(when you click outside the box))
+            $('input').blur(function(){
+                $(this).css('background', 'white'); //see when you clickout, it changes
+            });
+
+        //         KEY UP ADN DOWN EVENT(When you push a key)
+        $('input').keyup(function(e) {
+            console.log(e.target.value); //it will give us the data we are typing
+        });
+
+         //         Change Event(for select input)
+        $('select#gender').change(function(e) {
+            alert('Gender Changed');
+            alert(e.target.value);
+        });
+        
+        //         Submit Event(for button input)
+        $('#my-form').submit(function(e){
+            e.preventDefault(); //to stop submitting
+            var name = $('input#name').val();
+            console.log(name);  //see we can seee data but this method..
+        });
+    </script>
+</body>
+</html>
+
+<!-- That's for Events. See you in next lecture-->

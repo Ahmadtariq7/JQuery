@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> JQuery Crash Course </title>
+    <!-- including Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Including CSS from here -->
+    <style>
+        boddy {
+            font-size: 17px;
+            font-family: Arial;
+            background: lightgray;
+            line-height: 1.5em;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px black solid;
+            margin-bottom: 10px;
+
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JQuery Crash Course | Selectors </h1>
+    </header>
+    <div id="container">
+        <h1 id="Heading1">Bio 1</h1>
+        <p id="Para1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus explicabo
+            consectetur suscipit,unde, doloribus, alias eos minus nam dolorum non iste ipsam in.
+            <span>lorem ipsum dolar suitc sd </span>, facilis! Maiores nihil laboriosam minus inventore.</p>
+        <h1 class="Heading2">Bio 2</h1>
+        <p class="Para2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus explicabo
+            consectetur suscipit,unde, doloribus, alias eos minus nam dolorum non iste ipsam in.
+            <span>lorem ipsum dolar suitc sd </span>, facilis! Maiores nihil laboriosam minus inventore.</p>
+
+        <ul id="list">
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+        </ul>
+
+        <input type="button" value="Button1">
+        <input type="Submit" value="Button2">
+        <input type="Text">
+
+        <a href="http://www.google.com.pk">Google</a>
+        <a href="http://www.facebook.com">Facebook</a>
+
+    </div>
+    <!-- Jquery code goes here, Just comment out one by one and see results..-->
+    <script>
+// 1. want to use selector to grab headings. "$" represents JQuery
+        // $('h1').hide(); //you will see all h1s are gone.
+//2. but if we want to target only certain heading, we can do it by it's id.
+        // $('h1#Heading1').hide(); //id is represented by #.So see, only heading1 is gone.
+        // $('h1.Heading2').hide(); //classes are represented by .
+//3. basically we don't need h1 so we can also do this
+        // $('.Heading2').hide();
+//4. we can also do this with inner. E.g,
+        // $('p span').css('color', 'red'); //see span in paragraphs are turned in red.
+//5. we want to grab first list item
+        $('ul#list li:first').css('color', 'red');
+        $('ul#list li:last').css('color', 'green');
+        //we can target even and odd elements too.
+        $('ul#list li:even').css('background-color', 'yellow'); //see every even element is yellow
+        $('ul#list li:odd').css('background-color', 'lightgray');
+        //we can target nth value too. by using nth-child(n)
+        $('ul#list li:nth-child(2n)').css('list-style', 'none'); //see every 2nd doesn't have bullet
+//6. Now grab input one's so we use type attribute as selector
+        // $(':button').hide(); //by : ,  and see button is hidden
+        // $(':Submit').hide();
+        // $(':Text').hide();
+//7. now grabbing link href ones..
+        $('[href]').css('color', 'red'); //both links turn into red 
+        $('a[href="http://www.facebook.com"]').css('color', 'green'); //targeted attribute
+//8. Grab Everything
+        // $('*').hide(); //everything on page will gone
+    </script>
+</body>
+
+</html>
+
+<!-- These are Selectors. See you in next lecture-->

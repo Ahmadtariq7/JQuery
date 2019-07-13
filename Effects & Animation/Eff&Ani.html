@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+</div>
+<html>
+
+<head>
+    <title> JQuery Crash Course </title>
+    <!-- including Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Including CSS from here -->
+    <style>
+        boddy {
+            font-size: 17px;
+            font-family: Arial;
+            background: lightgray;
+            line-height: 1.5em;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px black solid;
+            margin-bottom: 10px;
+
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .myClass {
+            color: yellow;
+            background: black;
+        }
+        #box {
+            background: darkgray;
+            color: white;
+            width: 500px;
+            height: 90px;
+            padding: 40px;
+            text-align: center;
+        }
+        #box2 {
+            background: red;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JQuery Crash Course | Effects & Animation </h1>
+    </header>
+    <div id="container">
+        <button id="btnFadeOut">Fade Out</button>
+        <button id="btnFadeIn">Fade In</button>
+        <button id="btnFadeTog">Fade Toggle</button>
+        <hr>
+
+        <button id="btnSlideUp">Slide Up</button>
+        <button id="btnSlideDown">Slide Down</button>
+        <button id="btnSlideTog">Slide Toggle</button>
+        <button id="btnStop">Stop Effect</button>
+        <hr>
+
+        <div id="box"><h1>Effects Box</h1></div>
+        <hr>
+
+        <button id="moveLeft">Move Left</button>
+        <button id="moveRight">Move Right</button>
+        <button id="moveAround">Move Around</button>
+        <hr>
+        <div id="box2">Animation Box</div>
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            // ----------   EFFECTS   -------------
+        // FADE EFFECTS..
+            $('#btnFadeOut').click(function() {
+                $('#box').fadeOut('fast', function() { // so see when i click fadeout, box fades out.
+                    $('#btnFadeOut').text('Its Gone');
+                });
+            })
+            // we can set fast, slow and well as milliseconds
+            $('#btnFadeIn').click(function() { 
+                $('#box').fadeIn(3000, function() { //it also take optional function
+                    $('#btnFadeIn').text('Its Come');
+                });
+            })
+            $('#btnFadeTog').click(function() {
+                $('#box').fadeToggle(1000);
+            });
+        // SLIDE EFFECTS
+            $('#btnSlideDown').click(function() {
+                $('#box').slideDown(3000, function() {
+                    $('#btnSlideDown').text('Slided Down');
+                });
+            });
+            $('#btnSlideUp').click(function() {
+                $('#box').slideUp(2000, function() {
+                    $('#btnSlideUp').text('Slided Up');
+                });
+            });
+            $('#btnSlideTog').click(function() {
+                $('#box').slideToggle(1000);
+            });
+        // we can also stop it in middle of effect. 
+            $('#btnStop').click(function() {
+                $('#box').stop();
+            })
+    // ----------         ANIMATION       ------------
+
+            $('#moveRight').click(function() {
+                $('#box2').animate({ // in here pass object with options
+                    left: 300, //it will add CSS property left 500. make sure it is positioned relative
+                    height: 200, //we can animate anything which has numerial value or string of number
+                    width: '200px',
+                    opacity: '0.5'
+
+                });
+
+            });
+            $('#moveLeft').click(function() {
+                $('#box2').animate({ 
+                    left: 0,
+                    height: 100,
+                    width: 100,
+                    opacity: '1'
+                });
+            });
+            // we can use queue, where we do multiple animations at once
+            $('#moveAround').click(function() {
+                var box = $('#box2');
+                box.animate({
+                    left: 300
+                });
+                box.animate({
+                    top: 150
+                });
+                box.animate({
+                    left:0,
+                    top: 150
+                });
+                box.animate({
+                    left: 0,
+                    top: 0
+                });
+                // see it will animate in pattern
+            });
+        });
+    
+    </script>
+</body>
+</html>
+
+<!-- That's all for Effects & Animation. See you in next(last) lecture-->
